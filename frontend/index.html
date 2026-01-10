@@ -200,7 +200,7 @@
     const chatbot = document.getElementById("chatbot");
     
     try {
-      const res = await fetch('/api/chatbot/ask', {
+      const res = await fetch('https://edubot-o62v.onrender.com/api/chatbot/ask', {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query })
@@ -246,7 +246,7 @@
     window.speechSynthesis.speak(utterance);
 }
   async function loadSchools() {
-  const res = await fetch("http://localhost:4000/api/schools");
+  const res = await fetch("http://edubot-o62v.onrender.com/api/schools");
   const schools = await res.json();
 
   const list = document.getElementById("schoolList");
@@ -280,7 +280,7 @@
     }
 
     // Call backend AI recommendation API
-    const response = await fetch("http://localhost:4000/api/recommend", {
+    const response = await fetch("http://edubot-o62v.onrender.com/api/recommend", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
