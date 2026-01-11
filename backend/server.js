@@ -15,15 +15,15 @@ app.use(cors({ origin: "*" }));
 /* =========================
    FIREBASE INITIALIZATION
 ========================= */
-const serviceAccount = require("./firebaseKey.json");
-
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL:
-    "https://edubot-49076-default-rtdb.asia-southeast1.firebasedatabase.app/",
+  credential: admin.credential.cert({
+    project_id: process.env.FB_PROJECT_ID,
+    private_key: process.env.FB_PRIVATE_KEY.replace(/\\n/g, "\n"),
+    client_email: process.env.FB_CLIENT_EMAIL,
+  }),
+  databaseURL: process.env.FB_DATABASE_URL,
 });
 
-const db = admin.database();
 
 /* =========================
    GROQ AI INITIALIZATION
